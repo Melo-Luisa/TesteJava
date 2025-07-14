@@ -1,32 +1,32 @@
 import javax.swing.*;
-import java.awt.*;
 
+// ------------ CONTROLADOR / JANELA -----------------
 public class Main extends JFrame {
+    private final Snake snake;
+    private final GamePanel panel;
+    private final Food food; 
 
     public Main() {
-        setTitle("Minha Janela com Java");
-        setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // centraliza na tela
-    }
+        snake = new Snake(50, 50, 20);
+        food = new Food(50, 100, 20); // Criando um objeto Food
+        panel = new GamePanel(snake);
 
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        g.setColor(Color.BLUE);
-        g.fillRect(0, 0, getWidth(), getHeight());
+        setTitle("Snake Java Swing");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(800, 600);
+        setLocationRelativeTo(null);
+        add(panel);
+
+        // Exemplo de Timer para animar a cobra a cada 100 ms
+        new Timer(100, e -> {
+            snake.move();
+            panel.repaint();
+        }).start();
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            Main janela = new Main();
-            janela.setVisible(true);
+            new Main().setVisible(true);
         });
-        //Criando novos objeto de Cobra
-        Snake cobra = new Snake(50,50,10);
-        cobra.move();
-        cobra.grow(5);
-        System.out.println("Cobra está na posição: " + cobra.getX()); 
-        System.out.println("Tamanho da : " + cobra.getSize()); 
     }
 }
