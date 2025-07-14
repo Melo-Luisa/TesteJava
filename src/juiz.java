@@ -14,4 +14,8 @@ public class juiz {
     public int getVidas() {
         return vidas;
     }
+    public void aumentarPontuacao(int pontos) {
+        this.pontuacao += pontos;
+    }
+    
 }

@@ -1,3 +1,4 @@
+
 public class Snake {
     public int x;
     public int y;
@@ -20,5 +21,12 @@ public class Snake {
     
     public int getSize() {
         return size;
+    }
+    public void move(){
+        this.x += x;
+        this.y += y;
+    }
+    public void grow(int size) {
+        this.size += size;
     }
 }

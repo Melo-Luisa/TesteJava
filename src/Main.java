@@ -22,5 +22,11 @@ public class Main extends JFrame {
             Main janela = new Main();
             janela.setVisible(true);
         });
+        //Criando novos objeto de Cobra
+        Snake cobra = new Snake(50,50,10);
+        cobra.move();
+        cobra.grow(5);
+        System.out.println("Cobra está na posição: " + cobra.getX()); 
+        System.out.println("Tamanho da : " + cobra.getSize()); 
     }
 }
